@@ -151,6 +151,59 @@ app.post('/', ifLoggedin, [
         });
     }
 });
+
+// app.post('/login2', ifLoggedin, [
+//     body('user_email').custom((value) => {
+//         return dbConnection.execute('SELECT `email` FROM `users` WHERE `email`=?', [value])
+//         .then(([rows]) => {
+//             if(rows.length == 1){
+//                 return true;
+                
+//             }
+//             return Promise.reject('Invalid Email Address!');
+            
+//         });
+//     }),
+//     body('user_pass','Password is empty!').trim().not().isEmpty(),
+// ], (req, res) => {
+//     const validation_result = validationResult(req);
+//     const {user_pass, user_email} = req.body;
+//     if(validation_result.isEmpty()){
+        
+//         dbConnection.execute("SELECT * FROM `users` WHERE `email`=?",[user_email])
+//         .then(([rows]) => {
+//             bcrypt.compare(user_pass, rows[0].password).then(compare_result => {
+//                 if(compare_result === true){
+//                     req.session.isLoggedIn = true;
+//                     req.session.userID = rows[0].id;
+
+//                     res.redirect('/');
+//                 }
+//                 else{
+//                     res.render('login-register',{
+//                         login_errors:['Invalid Password!']
+//                     });
+//                 }
+//             })
+//             .catch(err => {
+//                 if (err) throw err;
+//             });
+
+
+//         }).catch(err => {
+//             if (err) throw err;
+//         });
+//     }
+//     else{
+//         let allErrors = validation_result.errors.map((error) => {
+//             return error.msg;
+//         });
+//         // REDERING login-register PAGE WITH LOGIN VALIDATION ERRORS
+//         res.render('login-register',{
+//             login_errors:allErrors
+//         });
+//     }
+// });
 // END OF LOGIN PAGE
 
 // LOGOUT
