@@ -1,4 +1,4 @@
-require('./node_modules/dotenv').config();
+require('dotenv').config();
 const mysql = require('mysql2');
 
 const dbHost = process.env.DB_HOST
@@ -14,14 +14,14 @@ const dbConnection = mysql.createPool({
 }).promise();
 module.exports = dbConnection
 
-dbConnection.query("CREATE DATABASE IF NOT EXISTS `expresswebapp`", function (err, result) {
-    if (err) throw err;
-    console.log("Database created");
-});
+// dbConnection.query("CREATE DATABASE IF NOT EXISTS `expresswebapp`", function (err, result) {
+//     if (err) throw err;
+//     console.log("Database created");
+// });
 
 
 //Connect to MySQL
-dbConnection.connect(function(err){
+dbConnection.getConnection(function(err){
 	if (err) throw err;
 	console.log('Connected To The Database!');
 
