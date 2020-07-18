@@ -14,10 +14,10 @@ const dbConnection = mysql.createPool({
 }).promise();
 module.exports = dbConnection
 
-// dbConnection.query("CREATE DATABASE IF NOT EXISTS `expresswebapp`", function (err, result) {
-//     if (err) throw err;
-//     console.log("Database created");
-// });
+dbConnection.query("CREATE DATABASE IF NOT EXISTS `expresswebapp`", function (err, result) {
+    if (err) throw err;
+    console.log("Database created");
+});
 
 
 //Connect to MySQL
