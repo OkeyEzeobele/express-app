@@ -12,13 +12,14 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var logger = require('morgan');
 
-mongoose.connect('mongodb://localhost:8080/loginapp', {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+mongoose.connect('mongodb://localhost:8080/express-app', {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
 .then(()=> console.log('Database Connected'))
 .catch(err => console.log(err));
 
 var db = mongoose.connection;
-var router = express.Router();
 
+
+//{useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
 
 //routes
 var routes = require('./routes/index');
